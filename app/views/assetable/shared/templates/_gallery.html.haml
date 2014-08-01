@@ -1,0 +1,14 @@
+.gallery-uploader
+
+  .uploader-assets-wrapper
+
+    - gallery.asset_attachments.each_with_index do |asset_attachment, index|
+      = render partial: 'assetable/shared/templates/gallery_item', locals: {asset: asset_attachment.asset, asset_attachment: asset_attachment, fieldname: fieldname, index: index}
+
+  = gallery_item_hidden_input
+
+  = render partial: "assetable/assets/directions", locals: {directions: options[:directions], fieldname: fieldname}
+
+
+  -# Hidden input for the actual gallery itself
+  = gallery_hidden_input
