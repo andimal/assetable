@@ -74,7 +74,7 @@
         filters:
           mime_types : [
             title: "Image files"
-            extensions: "jpg,gif,png"
+            extensions: "jpg,gif,png,jpeg"
           ,
             title: "Video files"
             extensions: "mov,mp4,mpeg4"
@@ -86,7 +86,7 @@
             extensions: "pdf,doc,docx,xls,xlsx"
           ]
           max_file_size: assetable_uploader.options.max_file_size
-          prevent_duplicates: true
+          prevent_duplicates: false
       )  
       
       
@@ -117,10 +117,11 @@
       
       # # Listen for errors
       uploader.bind "Error", (up, err) ->
-        
+        console.log err
 
 
       draggable_selector = (if assetable_uploader.options.gallery then $('.uploader-directions', assetable_uploader) else $(assetable_uploader))
+      draggable_selector = '.gallery-uploader'
 
       # Handle the drag over effect, adds a class to the container
       $(draggable_selector).bind "dragover", ->
